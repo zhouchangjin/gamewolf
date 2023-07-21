@@ -1,7 +1,11 @@
 package com.gamewolf.base.dto;
 
 import java.util.HashMap;
-
+/**
+ * 
+ * @author zhoucj
+ *
+ */
 public class MessageDTO {
 	
 String code;
