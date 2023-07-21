@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gamewolf.gameinfo.mapper.VgInfoMapper">
+  <resultMap id="BaseResultMap" type="com.gamewolf.gameinfo.model.VgInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gametitle_en" jdbcType="VARCHAR" property="gametitleEn" />
+    <result column="gametitle_zh" jdbcType="VARCHAR" property="gametitleZh" />
+    <result column="dev_com_id" jdbcType="INTEGER" property="devComId" />
+    <result column="dev_com_name" jdbcType="VARCHAR" property="devComName" />
+    <result column="pub_com_id" jdbcType="INTEGER" property="pubComId" />
+    <result column="pub_com_name" jdbcType="VARCHAR" property="pubComName" />
+    <result column="release_date" jdbcType="DATE" property="releaseDate" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="genreids" jdbcType="VARCHAR" property="genreids" />
+    <result column="themes" jdbcType="VARCHAR" property="themes" />
+  </resultMap>
+  
+
+  
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, gametitle_en, gametitle_zh, dev_com_id, dev_com_name, pub_com_id, pub_com_name, 
+    release_date, platform, genreids, themes
+  </sql>
+  
+   <select id="listInfo" resultMap="BaseResultMap">
+   select 
+    <include refid="Base_Column_List" />
+    from vg_info
+  </select>
+  <select id="selectByExample" parameterType="com.gamewolf.gameinfo.model.VgInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vg_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+
+    select 
+    <include refid="Base_Column_List" />
+    from vg_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from vg_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gamewolf.gameinfo.model.VgInfoExample">
+
+    delete from vg_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gamewolf.gameinfo.model.VgInfo">
+    insert into vg_info (id, gametitle_en, gametitle_zh, 
+      dev_com_id, dev_com_name, pub_com_id, 
+      pub_com_name, release_date, platform, 
+      genreids, themes)
+    values (#{id,jdbcType=BIGINT}, #{gametitleEn,jdbcType=VARCHAR}, #{gametitleZh,jdbcType=VARCHAR}, 
+      #{devComId,jdbcType=INTEGER}, #{devComName,jdbcType=VARCHAR}, #{pubComId,jdbcType=INTEGER}, 
+      #{pubComName,jdbcType=VARCHAR}, #{releaseDate,jdbcType=DATE}, #{platform,jdbcType=VARCHAR}, 
+      #{genreids,jdbcType=VARCHAR}, #{themes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gamewolf.gameinfo.model.VgInfo">
+
+    insert into vg_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gametitleEn != null">
+        gametitle_en,
+      </if>
+      <if test="gametitleZh != null">
+        gametitle_zh,
+      </if>
+      <if test="devComId != null">
+        dev_com_id,
+      </if>
+      <if test="devComName != null">
+        dev_com_name,
+      </if>
+      <if test="pubComId != null">
+        pub_com_id,
+      </if>
+      <if test="pubComName != null">
+        pub_com_name,
+      </if>
+      <if test="releaseDate != null">
+        release_date,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="genreids != null">
+        genreids,
+      </if>
+      <if test="themes != null">
+        themes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="gametitleEn != null">
+        #{gametitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="gametitleZh != null">
+        #{gametitleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="devComId != null">
+        #{devComId,jdbcType=INTEGER},
+      </if>
+      <if test="devComName != null">
+        #{devComName,jdbcType=VARCHAR},
+      </if>
+      <if test="pubComId != null">
+        #{pubComId,jdbcType=INTEGER},
+      </if>
+      <if test="pubComName != null">
+        #{pubComName,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null">
+        #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="genreids != null">
+        #{genreids,jdbcType=VARCHAR},
+      </if>
+      <if test="themes != null">
+        #{themes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gamewolf.gameinfo.model.VgInfoExample" resultType="java.lang.Long">
+    select count(*) from vg_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+
+    update vg_info
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.gametitleEn != null">
+        gametitle_en = #{row.gametitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="row.gametitleZh != null">
+        gametitle_zh = #{row.gametitleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="row.devComId != null">
+        dev_com_id = #{row.devComId,jdbcType=INTEGER},
+      </if>
+      <if test="row.devComName != null">
+        dev_com_name = #{row.devComName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.pubComId != null">
+        pub_com_id = #{row.pubComId,jdbcType=INTEGER},
+      </if>
+      <if test="row.pubComName != null">
+        pub_com_name = #{row.pubComName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.releaseDate != null">
+        release_date = #{row.releaseDate,jdbcType=DATE},
+      </if>
+      <if test="row.platform != null">
+        platform = #{row.platform,jdbcType=VARCHAR},
+      </if>
+      <if test="row.genreids != null">
+        genreids = #{row.genreids,jdbcType=VARCHAR},
+      </if>
+      <if test="row.themes != null">
+        themes = #{row.themes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+
+    update vg_info
+    set id = #{row.id,jdbcType=BIGINT},
+      gametitle_en = #{row.gametitleEn,jdbcType=VARCHAR},
+      gametitle_zh = #{row.gametitleZh,jdbcType=VARCHAR},
+      dev_com_id = #{row.devComId,jdbcType=INTEGER},
+      dev_com_name = #{row.devComName,jdbcType=VARCHAR},
+      pub_com_id = #{row.pubComId,jdbcType=INTEGER},
+      pub_com_name = #{row.pubComName,jdbcType=VARCHAR},
+      release_date = #{row.releaseDate,jdbcType=DATE},
+      platform = #{row.platform,jdbcType=VARCHAR},
+      genreids = #{row.genreids,jdbcType=VARCHAR},
+      themes = #{row.themes,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gamewolf.gameinfo.model.VgInfo">
+
+    update vg_info
+    <set>
+      <if test="gametitleEn != null">
+        gametitle_en = #{gametitleEn,jdbcType=VARCHAR},
+      </if>
+      <if test="gametitleZh != null">
+        gametitle_zh = #{gametitleZh,jdbcType=VARCHAR},
+      </if>
+      <if test="devComId != null">
+        dev_com_id = #{devComId,jdbcType=INTEGER},
+      </if>
+      <if test="devComName != null">
+        dev_com_name = #{devComName,jdbcType=VARCHAR},
+      </if>
+      <if test="pubComId != null">
+        pub_com_id = #{pubComId,jdbcType=INTEGER},
+      </if>
+      <if test="pubComName != null">
+        pub_com_name = #{pubComName,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null">
+        release_date = #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="genreids != null">
+        genreids = #{genreids,jdbcType=VARCHAR},
+      </if>
+      <if test="themes != null">
+        themes = #{themes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gamewolf.gameinfo.model.VgInfo">
+
+    update vg_info
+    set gametitle_en = #{gametitleEn,jdbcType=VARCHAR},
+      gametitle_zh = #{gametitleZh,jdbcType=VARCHAR},
+      dev_com_id = #{devComId,jdbcType=INTEGER},
+      dev_com_name = #{devComName,jdbcType=VARCHAR},
+      pub_com_id = #{pubComId,jdbcType=INTEGER},
+      pub_com_name = #{pubComName,jdbcType=VARCHAR},
+      release_date = #{releaseDate,jdbcType=DATE},
+      platform = #{platform,jdbcType=VARCHAR},
+      genreids = #{genreids,jdbcType=VARCHAR},
+      themes = #{themes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
