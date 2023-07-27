@@ -34,5 +34,12 @@ public class GameInfoController {
 		m.setData("list", list);
 		return m;
 	}
+	
+	public MessageDTO ExampleAddGameInfo() {
+		MessageDTO m=new MessageDTO();
+		m.setCode("100");
+		m.setMessage("hellow world");
+		return m;
+	}
 
 }
