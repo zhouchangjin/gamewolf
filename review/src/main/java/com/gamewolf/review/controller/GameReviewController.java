@@ -68,4 +68,19 @@ public class GameReviewController {
 		reviewService.AddGameReview(reviewBlob);
         return m;
 	}
+	
+	@RequestMapping(value = "/addReviewAndInfo", method = RequestMethod.GET)
+	@ResponseBody
+	public MessageDTO globalTransactionExample() {
+		MessageDTO m=new MessageDTO();
+		m.setCode("100");
+		m.setMessage("hello review");
+		VgReviewWithBLOBs reviewBlob=new VgReviewWithBLOBs();
+		reviewBlob.setGameId(-1l);
+		reviewBlob.setIsAnonimous(true);
+		reviewBlob.setOverallRate(4);
+		reviewBlob.setReviewCnt("不错的游戏");
+		reviewService.AddGameInfoAndReview(reviewBlob);
+		return m;
+	}
 }

@@ -1,5 +1,6 @@
 package com.gamewolf.gameinfo.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -35,9 +36,16 @@ public class GameInfoController {
 		return m;
 	}
 	
+	@RequestMapping(value = "/addGameInfoExample", method = RequestMethod.GET)
+	@ResponseBody
 	public MessageDTO ExampleAddGameInfo() {
 		MessageDTO m=new MessageDTO();
 		m.setCode("100");
+		VgInfo info=new VgInfo();
+		info.setGametitleEn("Sword and Fairy 7");
+		info.setDevComName("Domo");
+		info.setReleaseDate(new Date());
+		service.AddGameInfo(info);
 		m.setMessage("hellow world");
 		return m;
 	}

@@ -7,4 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface DemoFeignClient {
 	@RequestMapping("example")
 	public String getExample();
+	
+	@RequestMapping("addGameInfoExample")
+	public String addGameInfoExample();
 }

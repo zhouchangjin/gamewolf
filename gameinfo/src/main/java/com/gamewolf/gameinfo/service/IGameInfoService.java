@@ -8,4 +8,6 @@ public interface IGameInfoService {
 	
 	List<VgInfo> getGameList();
 
+	int AddGameInfo(VgInfo info);
+
 }

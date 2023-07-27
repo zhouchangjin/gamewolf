@@ -18,5 +18,11 @@ public class GameInfoServiceImpl implements IGameInfoService {
 	public List<VgInfo> getGameList() {
 		return vgInfoMapper.listInfo();
 	}
+	
+	@Override
+	public int AddGameInfo(VgInfo info){
+		int id=vgInfoMapper.insert(info);
+		return id;
+	}
 
 }
