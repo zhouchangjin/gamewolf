@@ -29,6 +29,7 @@ public class GameReviewServiceImpl implements IGameReviewService {
 		
 		vgReviewMapper.insert(review);
 		feignClient.addGameInfoExample();
+		System.out.println("Roback"+1/0);
 	}
 
 }
