@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,15 @@ import com.gamewolf.base.dto.MessageDTO;
 import com.gamewolf.gameinfo.model.VgInfo;
 import com.gamewolf.gameinfo.service.IGameInfoService;
 
+import ch.qos.logback.classic.Logger;
+
 @CrossOrigin
 @RestController
 @RequestMapping("gameinfo")
 @MapperScan("com.gamewolf.gameinfo.mapper") 
 public class GameInfoController {
+	
+	Logger logger = (Logger) LoggerFactory.getLogger(GameInfoController.class);
 	
 	@Autowired
 	IGameInfoService service;
@@ -33,6 +38,7 @@ public class GameInfoController {
 		m.setCode("100");
 		m.setMessage("hellow world");
 		m.setData("list", list);
+		logger.info("Test logger");
 		return m;
 	}
 	
