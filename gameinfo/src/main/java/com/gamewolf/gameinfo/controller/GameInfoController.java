@@ -1,7 +1,10 @@
 package com.gamewolf.gameinfo.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.LoggerFactory;
@@ -38,7 +41,42 @@ public class GameInfoController {
 		m.setCode("100");
 		m.setMessage("hellow world");
 		m.setData("list", list);
+		
 		logger.info("Test logger");
+		return m;
+	}
+	
+	@RequestMapping(value = "/asyn_example", method = RequestMethod.GET)
+	@ResponseBody
+	public MessageDTO AsynExampleGameInfo() {
+		MessageDTO m=new MessageDTO();
+		m.setCode("100");
+		m.setMessage("hellow world multithread tasking");
+		logger.info("启动多线程 logger");
+		//多线程示例
+		for(int i=0;i<10;i++) {
+			service.asynTask(i);
+		}
+		List<Future<String>> futurelist=new ArrayList<Future<String>>();
+		for(int i=0;i<3;i++) {
+			Future<String> future=service.asynFutureTask(i);
+			futurelist.add(future);
+		}
+		
+		//下面的代码会导致接口阻塞
+		/**
+		for(Future<String> f:futurelist) {
+			try {
+				logger.info(f.get());
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		**/
 		return m;
 	}
 	

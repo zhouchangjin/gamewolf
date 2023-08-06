@@ -8,9 +8,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients
-@EnableDiscoveryClient
-@MapperScan("com.gamewolf.gameinfo.mapper")
+//@EnableAsync  //异步 支持线程池 不需要在这里
+@EnableFeignClients //非url方式调用微服务
+@EnableDiscoveryClient //注册服务
+@MapperScan("com.gamewolf.gameinfo.mapper") //mybatis
 public class GameInfoServicesApplication {
 
 	public static void main(String[] args) {
