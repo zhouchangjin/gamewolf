@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
-import com.gamewolf.gameinfo.controller.GameInfoController;
 import com.gamewolf.gameinfo.mapper.VgInfoMapper;
 import com.gamewolf.gameinfo.model.VgInfo;
 
