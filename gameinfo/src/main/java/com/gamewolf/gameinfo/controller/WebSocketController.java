@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import com.gamewolf.gameinfo.model.SocketInputMsg;
 import com.gamewolf.gameinfo.model.SocketMessage;
 
-@Controller //很重要
+@Controller //很重要，未确定
 public class WebSocketController {
 	
 	@MessageMapping("/chat")
@@ -21,7 +21,6 @@ public class WebSocketController {
 	    sm.setFrom(message.getFrom());
 	    sm.setText(message.getText());
 	    sm.setTime(time);
-	    //message.setTime(time);
 	    return sm;
 	}
 
