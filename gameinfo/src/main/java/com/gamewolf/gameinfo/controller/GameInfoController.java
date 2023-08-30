@@ -23,7 +23,6 @@ import ch.qos.logback.classic.Logger;
 @CrossOrigin
 @RestController
 @RequestMapping("gameinfo")
-@MapperScan("com.gamewolf.gameinfo.mapper") 
 public class GameInfoController {
 	
 	Logger logger = (Logger) LoggerFactory.getLogger(GameInfoController.class);
