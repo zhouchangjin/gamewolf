@@ -18,18 +18,18 @@
   -->
    <context id="simple" targetRuntime="MyBatis3">
        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://127.0.0.1:3306/gameinfo?useSSL=true" 
+        connectionURL="jdbc:mysql://127.0.0.1:3306/gamereview?useSSL=true" 
         userId="root" password="aaa123456"/>
 
-    <javaModelGenerator targetPackage="com.gamewolf.base.model" targetProject="src/main/java"/>
+    <javaModelGenerator targetPackage="com.gamewolf.review.model" targetProject="src/main/java"/>
     
-    <sqlMapGenerator targetPackage="com.gamewolf.base.mapper" targetProject="src/main/java"/>
+    <sqlMapGenerator targetPackage="com.gamewolf.review.mapper" targetProject="src/main/java"/>
 
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.gamewolf.base.mapper" targetProject="src/main/java"/>
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.gamewolf.review.mapper" targetProject="src/main/java"/>
 	
 	
 	
-    <table tableName="vg_menu" schema="gameinfo"/>
+    <table tableName="vg_review" schema="gamereview"/>
   </context>
   
 </generatorConfiguration>

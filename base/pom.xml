@@ -7,4 +7,11 @@
   </parent>
   <groupId>com.gamewolf</groupId>
   <artifactId>base</artifactId>
+  <dependencies>
+	  <dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<scope>provided</scope>
+	  </dependency>
+  </dependencies>
 </project>

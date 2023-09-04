@@ -29,7 +29,7 @@
 	
 	
 	
-    <table tableName="vg_info" schema="gameinfo"/>
+    <table tableName="vg_menu" schema="gameinfo"/>
   </context>
   
 </generatorConfiguration>
