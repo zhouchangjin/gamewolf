@@ -93,4 +93,7 @@ public interface VgMenuMapper {
      * @mbg.generated Mon Sep 04 10:00:28 GMT+08:00 2023
      */
     int updateByPrimaryKey(VgMenu row);
+    
+    
+    List<VgMenu> listAllMenu();
 }

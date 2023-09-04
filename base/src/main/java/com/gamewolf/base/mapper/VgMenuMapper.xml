@@ -92,6 +92,11 @@
     -->
     id, menu_name, menu_cname, menu_icon, menu_path, menu_icon_url, parent_id, menu_type
   </sql>
+  <select id="listAllMenu" parameterType="com.gamewolf.base.model.VgMenu" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from vg_menu
+  </select>
   <select id="selectByExample" parameterType="com.gamewolf.base.model.VgMenuExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
