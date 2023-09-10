@@ -32,8 +32,6 @@ CREATE TABLE `undo_log` (
   KEY `ix_log_created` (`log_created`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='AT transaction mode undo table';
 
-/*Data for the table `undo_log` */
-
 /*Table structure for table `vg_info` */
 
 DROP TABLE IF EXISTS `vg_info`;
@@ -51,12 +49,7 @@ CREATE TABLE `vg_info` (
   `genreids` varchar(20) DEFAULT NULL,
   `themes` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `vg_info` */
-
-insert  into `vg_info`(`id`,`gametitle_en`,`gametitle_zh`,`dev_com_id`,`dev_com_name`,`pub_com_id`,`pub_com_name`,`release_date`,`platform`,`genreids`,`themes`) values 
-(4,Ultima,创世纪1,NULL,NULL,NULL,NULL,NULL,PC,1,1);
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `vg_menu` */
 
@@ -72,12 +65,7 @@ CREATE TABLE `vg_menu` (
   `parent_id` int(11) DEFAULT NULL,
   `menu_type` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `vg_menu` */
-
-insert  into `vg_menu`(`id`,`menu_name`,`menu_cname`,`menu_icon`,`menu_path`,`menu_icon_url`,`parent_id`,`menu_type`) values 
-(1,test,test,NULL,NULL,NULL,NULL,NULL);
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
