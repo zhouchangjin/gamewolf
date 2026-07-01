@@ -1,9 +1,10 @@
-package com.gamewolf.base.mapper;
+package com.gamewolf.gameinfo.mapper;
 
-import com.gamewolf.base.model.VgMenu;
-import com.gamewolf.base.model.VgMenuExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.gamewolf.gameinfo.model.VgMenu;
+import com.gamewolf.gameinfo.model.VgMenuExample;
 
 public interface VgMenuMapper {
     /**

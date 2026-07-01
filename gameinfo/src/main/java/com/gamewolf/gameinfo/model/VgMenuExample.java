@@ -1,4 +1,4 @@
-package com.gamewolf.base.model;
+package com.gamewolf.gameinfo.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gamewolf.base.dto.MessageDTO;
-import com.gamewolf.base.model.VgMenu;
-import com.gamewolf.base.service.IMenuService;
+import com.gamewolf.gameinfo.model.VgMenu;
+import com.gamewolf.gameinfo.service.IMenuService;
 
 import ch.qos.logback.classic.Logger;
 

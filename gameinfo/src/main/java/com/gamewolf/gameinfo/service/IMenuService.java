@@ -1,8 +1,8 @@
-package com.gamewolf.base.service;
+package com.gamewolf.gameinfo.service;
 
 import java.util.List;
 
-import com.gamewolf.base.model.VgMenu;
+import com.gamewolf.gameinfo.model.VgMenu;
 
 public interface IMenuService {
 	

@@ -1,4 +1,4 @@
-package com.gamewolf.base.model;
+package com.gamewolf.gameinfo.model;
 
 public class VgMenu {
     /**
